@@ -1,7 +1,7 @@
 <template>
   <div>
-    <el-radio v-model="radio" label="1" border>Option A</el-radio>
-    <el-radio v-model="radio" label="2" border>Option B</el-radio>
+    <el-radio v-model="radio" label="1" border>Yes</el-radio>
+    <el-radio v-model="radio" label="2" border>No</el-radio>
   </div>
 </template>
 
