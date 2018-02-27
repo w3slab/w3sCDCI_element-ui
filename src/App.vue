@@ -1,10 +1,18 @@
 <template>
   <div id="app">
-    <el-row>
+  <router-view></router-view>
+  <el-row>
+    <el-steps :active="active" finish-status="success">
+      <el-step title="Step 1"></el-step>
+      <el-step title="Step 2"></el-step>
+      <el-step title="Step 3"></el-step>
+    </el-steps>
+  </el-row>
+  <el-row>
     Choose the project you want to build.
       <el-dropdown>
         <span class="el-dropdown-link">
-          Dropdown List<i class="el-icon-arrow-down el-icon--right"></i>
+          Choose<i class="el-icon-arrow-down el-icon--right"></i>
         </span>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item>InfraData</el-dropdown-item>
@@ -15,7 +23,6 @@
         </el-dropdown-menu>
       </el-dropdown>
     </el-row>
-
     <el-row>
       Do you want a database backup?
       <radio/>
@@ -26,16 +33,40 @@
       <radio/>
     </el-row>
 
+    <el-row>
+    When do you want to deploy?
+    <datetime/>
+    </el-row>
+
+    Build progress
+    <el-row>
+      <el-progress type="circle" :percentage="44"></el-progress>
+    </el-row>
+    <el-row>
+      <el-button style="margin-top: 12px;" @click="next">Next step</el-button>
+    </el-row>
   </div>
 </template>
 
 <script>
 import radio from "./components/radio";
+import datetime from "./components/datetime";
 
 export default {
   name: "App",
   components: {
-    radio
+    radio,
+    datetime
+  },
+  data() {
+    return {
+      active: 0
+    };
+  },
+  methods: {
+    next() {
+      if (this.active++ > 2) this.active = 0;
+    }
   }
 };
 </script>

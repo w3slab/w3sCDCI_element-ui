@@ -1,7 +1,10 @@
 <template>
   <div>
-    <el-radio v-model="radio" label="1" border>Yes</el-radio>
-    <el-radio v-model="radio" label="2" border>No</el-radio>
+    <el-radio v-model="radio" label="1" v-on:change="foo" border>Yes</el-radio>
+    <el-radio v-model="radio" label="2" v-on:change="foo" border>No</el-radio>
+
+    {{ product }}
+
   </div>
 </template>
 
@@ -9,8 +12,14 @@
 export default {
   data() {
     return {
-      radio: "1"
+      radio: "1",
+      product: "hoi"
     };
+  },
+  methods: {
+    foo: function() {
+      this.product = "doei";
+    }
   }
 };
 </script>
